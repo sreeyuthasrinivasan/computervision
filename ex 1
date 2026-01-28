@@ -1,0 +1,19 @@
+import cv2
+
+# Load the image
+image = cv2.imread(r"C:\Users\LENOVO\OneDrive\Desktop\open cv\sample_image.jpg")
+
+# Check if image loaded successfully
+if image is None:
+    print("Image not loaded. Check the file path.")
+else:
+    # Convert to grayscale
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    
+    # Display original and grayscale
+    cv2.imshow("Original Image", image)
+    cv2.imshow("Grayscale Image", gray_image)
+    
+    # Wait for key press and close windows
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
