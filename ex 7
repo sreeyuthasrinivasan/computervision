@@ -1,0 +1,42 @@
+import cv2
+
+# Read the captured video file
+video = cv2.VideoCapture("input_video.mp4")  # change video file name
+
+# Check if video opened successfully
+if not video.isOpened():
+    print("Error: Cannot open video file")
+else:
+    # Get FPS of the video
+    fps = video.get(cv2.CAP_PROP_FPS)
+    delay = int(1000 / fps)  # normal speed delay in ms
+
+    while True:
+        ret, frame = video.read()
+        if not ret:
+            break
+
+        # Display the video frame
+        cv2.imshow("Video Playback", frame)
+
+        # Key controls:
+        # Normal speed  -> press 'n'
+        # Slow motion   -> press 's'
+        # Fast motion   -> press 'f'
+        # Exit          -> press 'q'
+        key = cv2.waitKey(delay) & 0xFF
+
+        if key == ord('s'):       # Slow motion
+            delay = int((1000 / fps) * 2)
+
+        elif key == ord('f'):     # Fast motion
+            delay = int((1000 / fps) / 2)
+
+        elif key == ord('n'):     # Normal speed
+            delay = int(1000 / fps)
+
+        elif key == ord('q'):     # Quit
+            break
+
+    video.release()
+    cv2.destroyAllWindows()
