@@ -1,0 +1,21 @@
+import cv2
+
+# Read image
+image = cv2.imread("input.jpg")
+
+if image is None:
+    print("Image not found")
+else:
+    # Select ROI (y1:y2, x1:x2)
+    roi = image[100:300, 100:300]
+
+    # Copy ROI
+    roi_copy = roi.copy()
+
+    # Paste ROI to another location
+    image[50:250, 350:550] = roi_copy
+
+    cv2.imshow("ROI", roi)
+    cv2.imshow("Image after Pasting ROI", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
