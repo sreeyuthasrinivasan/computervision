@@ -1,0 +1,24 @@
+import cv2
+import numpy as np
+
+# Read the image (change path if needed)
+image = cv2.imread("input.jpg")
+
+# Check if image is loaded
+if image is None:
+    print("Error: Image not found!")
+else:
+    # Convert to grayscale
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Apply Histogram Equalization
+    equalized = cv2.equalizeHist(gray)
+
+    # Show original grayscale image
+    cv2.imshow("Original Grayscale Image", gray)
+
+    # Show histogram equalized image
+    cv2.imshow("Histogram Equalized Image", equalized)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
