@@ -1,0 +1,34 @@
+import cv2
+
+# Read original image
+image = cv2.imread("input.jpg")
+
+if image is None:
+    print("Image not found")
+else:
+    # Define watermark text
+    watermark_text = "SAMPLE WATERMARK"
+
+    # Set position, font, size and color
+    position = (50, 50)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 1
+    color = (255, 255, 255)
+    thickness = 2
+
+    # Add watermark text
+    watermarked_image = cv2.putText(
+        image.copy(),
+        watermark_text,
+        position,
+        font,
+        font_scale,
+        color,
+        thickness,
+        cv2.LINE_AA
+    )
+
+    cv2.imshow("Original Image", image)
+    cv2.imshow("Watermarked Image", watermarked_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
