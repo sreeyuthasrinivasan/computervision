@@ -1,0 +1,11 @@
+img = cv2.imread("image.jpg")
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+lower = np.array([0,0,200])
+upper = np.array([180,30,255])
+
+mask = cv2.inRange(hsv, lower, upper)
+bg_removed = cv2.bitwise_and(img,img,mask=mask)
+
+cv2.imshow("Background Removed", bg_removed)
+cv2.waitKey(0)
