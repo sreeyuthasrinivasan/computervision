@@ -1,0 +1,5 @@
+fg = cv2.bitwise_not(mask)
+fg_removed = cv2.bitwise_and(img,img,mask=fg)
+
+cv2.imshow("Foreground Removed", fg_removed)
+cv2.waitKey(0)
