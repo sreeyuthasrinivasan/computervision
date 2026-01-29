@@ -1,0 +1,7 @@
+def draw_rectangle(size):
+    img = np.ones((size,size,3),dtype=np.uint8)*255
+    cv2.rectangle(img,(100,100),(300,300),(0,0,255),3)
+    cv2.imshow("Rectangle",img)
+    cv2.waitKey(0)
+
+draw_rectangle(500)
